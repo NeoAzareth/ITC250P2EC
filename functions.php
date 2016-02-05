@@ -83,7 +83,7 @@ function validateForm($post, $items, $toppings, $order)
  */
 function validateInt($int)
 {
-    if (filter_var($int, FILTER_VALIDATE_INT) === false && $int != 0 || $int == 0.0) {
+    if (filter_var($int, FILTER_VALIDATE_INT) === false && $int != 0) {
         return false;
     } else {
         return true;
