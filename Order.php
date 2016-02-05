@@ -185,9 +185,9 @@ class Order
                 //loops to repeat the line x quantity of items
                 for ($x = 1; $x<= $quantity; $x++) {
                     
-                    //checks if a key exists in the summary array
-                    //in this case $line refers to an item's summary
-                    //example key: "Burrito with tomatos"
+                    /*checks if a key exists in the summary array.
+                    *$line refers to an item's summary.
+                    *example key: "Burrito with tomatos"*/
                     if (array_key_exists($line,$summaryArray)) {
                         //if the key and $line matches, increases its value by 1
                         $summaryArray["$line"]++;
@@ -197,9 +197,9 @@ class Order
                     }
                     //resets the line to start over 
                     $line = '';
-                    //adds the period to the sentence
+                    //adds the items name and a period
                     $line .= $items["$item"]->name . '.';
-                    //resets the counter to indicate the 
+                    //resets the counter to indicate there are not toppings in the string
                     $counter = 0;
                     
                     //loops through the orderDetails property and checks for toppings
@@ -208,13 +208,14 @@ class Order
                         //condition that ensures the value is a topping
                         if ($toppings["$value"] && $value != '') {
                             
-                            //essential for creating the summary
-                            //this BIF explodes the $topping variable 
-                            //and asigns it to itself
-                            //e.g  $topping = "1-burrito-lettuce"
-                            //afte explode $topping = ['1','burrito','lettuce']
-                            //the number indicates which burrito are you working on
-                            //1st,2nd etc
+                            /*essential for creating the summary
+                            *this BIF explodes the $topping variable 
+                            *into an array
+                            *e.g  $topping = "1-burrito-lettuce"
+                            *after explode $topping = ['1','burrito','lettuce']
+                            *the number indicates which number item this topping
+                            *belongs to. e.g "2-taco-lettuce"
+                            *topping key means the extra lettuce belongs to the 2nd taco*/
                             $topping = explode('-',$topping);
                             
                             //here we check if the topping belongs to the $x number of
